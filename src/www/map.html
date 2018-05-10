@@ -5,15 +5,38 @@
     <title>Udacity Maps Project</title>
 
     <!-- Load any CSS -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/map.css" />
 </head>
 <body>
 
-    <!-- Add a map instance to page -->
-    <div id="map"></div>
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- Add an options panel for map interaction -->
+            <div class="col-md-3 options-panel">
+                <h1>Options:</h1>
+                <div>
+                    <input id="show-reservoirs" type="button" value="Show reservoirs">
+                    <input id="hide-reservoirs" type="button" value="Hide reservoirs">
+                </div>
+            </div>
+            <!-- Add a map instance to page -->
+            <div id="map_canvas" class="col-md-9"></div>
+
+        </div>
+    </div>
     
 
     <!-- Load any JS -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="../js/map.js"></script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDleowJDrBa4pIE8aIZAdrfsM4wWSFZb2A&v=3&callback=initMap"></script>
