@@ -5,6 +5,7 @@ var mapHtmlElement = document.getElementById(mapElementId);
 
 // Will hold the Map object
 var myMap;
+var c1Layer;
 
 // Map Initial Params
 var mapInitCenter = {
@@ -16,8 +17,9 @@ var mapInitZoom = 15;
 var mapInitParams = {
     center: mapInitCenter,
     zoom: mapInitZoom,
-    mapTypeControl: false,
-    styles: nightly_style.styles
+    mapTypeControlOptions: {
+        mapTypeIds: ['roadmap', 'Road', 'Nightly']
+    }
 };
 
 var markers = [];
@@ -30,6 +32,8 @@ function initMap() {
 
     document.getElementById("show-reservoirs").addEventListener("click", showMarkers);
     document.getElementById("hide-reservoirs").addEventListener("click", hideMarkers);
+    document.getElementById("show-pipes").addEventListener("click", showPipes);
+    document.getElementById("hide-pipes").addEventListener("click", hidePipes);
 }
 
 // Google Maps API access
@@ -83,6 +87,14 @@ function loadMap(element, params) {
         element, 
         params
     );
+    // Load Map Styles
+    myMap.mapTypes.set('Nightly', getMappedStyleType(nightly_style));
+    myMap.mapTypes.set('Road', getMappedStyleType(roadOutline_style));
+
+
+    c1Layer = new google.maps.KmlLayer({
+        url: 'http://pereirinhaped.github.io/paths/C1.kml',
+      });
 }
 
 //
@@ -100,4 +112,12 @@ function showMarkers() {
 function hideMarkers() {
     for (var i = 0; i < markers.length; i++)
         markers[i].setMap(null);
+}
+
+function showPipes() {
+    c1Layer.setMap(myMap);
+}
+
+function hidePipes() {
+    c1Layer.setMap(null);
 }
